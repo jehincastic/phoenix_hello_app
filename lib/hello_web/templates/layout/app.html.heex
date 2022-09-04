@@ -1,0 +1,15 @@
+<main class="container">
+  <p>Locale: <%= @locale %></p>
+  <%# page_path is take from `mix phx.routes` command %>
+  <div
+    style="display: flex; justify-content: space-evenly;"
+  >
+    <p><%= link "Home Page!", to: Routes.page_path(@conn, :index) %></p>
+    <p><%= link "Hello Page!", to: Routes.hello_path(@conn, :index) %></p>
+    <p><%= link "John Page!", to: Routes.hello_path(@conn, :show, "John") %></p>
+    <p><%= link "Hello Page [FR]!", to: Routes.hello_path(@conn, :index, locale: "fr") %></p>
+  </div>
+  <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
+  <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+  <%= @inner_content %>
+</main>
